@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asistente n8n A.I PRO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <main class="container">
+    <h1>🤖 Asistente de Automatización n8n</h1>
+
+    <!-- Chat Contextual -->
+    <section id="chat" aria-label="Chat entre el usuario y el asistente IA"></section>
+
+    <!-- Entrada de mensaje tipo ChatGPT -->
+    <div class="input-wrapper">
+      <textarea 
+        id="instruction" 
+        placeholder="Escribe tu idea o pregunta sobre automatización en n8n..."
+        aria-label="Área para conversar con el asistente IA"
+        oninput="resizeTextarea(this)"
+      ></textarea>
+      <div class="actions">
+        <button onclick="askAssistant()">💬 Enviar</button>
+        <button id="generateBtn" onclick="generateWorkflow()" disabled style="opacity: 0.5;">⚙️ Generar Workflow</button>
+        <button onclick="limpiarChat()">🧹 Limpiar</button>
+      </div>
+    </div>
+
+    <!-- Resultado del Workflow -->
+    <div id="resultado" style="margin-top: 2rem; display: none;">
+      <h2>⚙️ Workflow Generado</h2>
+      <pre id="output" class="json"></pre>
+      <div class="actions">
+        <button id="copyBtn" onclick="copiarJSON()" style="display:none;">📋 Copiar JSON</button>
+        <a id="downloadLink" download="workflow_n8n.json" style="display:none;">⬇️ Descargar JSON</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function resizeTextarea(el) {
+      el.style.height = 'auto';
+      el.style.height = (el.scrollHeight + 2) + 'px';
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+

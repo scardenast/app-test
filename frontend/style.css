@@ -1,0 +1,192 @@
+/* ------------------------------
+   Fuente base y ajustes globales
+------------------------------ */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
+  margin: 0;
+  padding: 0;
+  color: #111827;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 1.75rem;
+  text-align: center;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+/* ------------------------------
+   Chat Scroll Area
+------------------------------ */
+#chat {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  height: 420px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 0.95rem;
+  scroll-behavior: smooth;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.message {
+  display: flex;
+  max-width: 100%;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.assistant,
+.message.system {
+  justify-content: flex-start;
+}
+
+.bubble {
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  max-width: 85%;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.message.user .bubble {
+  background-color: #dbeafe;
+  color: #1e40af;
+  border-bottom-right-radius: 0;
+}
+
+.message.assistant .bubble {
+  background-color: #f3f4f6;
+  color: #111827;
+  border-bottom-left-radius: 0;
+}
+
+.message.system .bubble {
+  font-style: italic;
+  background-color: #fff7ed;
+  color: #92400e;
+  border-bottom-left-radius: 0;
+}
+
+/* ------------------------------
+   Área inferior: input estilo ChatGPT
+------------------------------ */
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1rem;
+}
+
+.input-wrapper textarea {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  resize: none;
+  background-color: #ffffff;
+  min-height: 60px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.input-wrapper textarea:focus {
+  border-color: #6366f1;
+  outline: none;
+}
+
+.input-wrapper .buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button,
+a#downloadLink {
+  background-color: #4f46e5;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover,
+a#downloadLink:hover {
+  background-color: #4338ca;
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* ------------------------------
+   JSON y Resultados
+------------------------------ */
+#resultado {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+pre.json {
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  padding: 0.75rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.result-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+pre span.string {
+  color: #10b981;
+}
+pre span.number {
+  color: #3b82f6;
+}
+pre span.boolean {
+  color: #f59e0b;
+}
+pre span.null {
+  color: #9ca3af;
+}
+pre span.key {
+  color: #6366f1;
+}

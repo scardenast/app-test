@@ -1,0 +1,67 @@
+{
+  "nodes": [
+    {
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1,
+      "position": [200, 300]
+    },
+    {
+      "name": "Generate Email Content",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [400, 300],
+      "parameters": {
+        "url": "https://api.openai.com/v1/engines/davinci/completions",
+        "method": "POST",
+        "headers": {
+          "Authorization": "Bearer YOUR_API_KEY",
+          "Content-Type": "application/json"
+        },
+        "options": {},
+        "body": {
+          "prompt": "Escribe un correo de agradecimiento para una entrevista de trabajo.",
+          "max_tokens": 100,
+          "temperature": 0.7
+        }
+      }
+    },
+    {
+      "name": "Send Email",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 1,
+      "position": [600, 300],
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "to": "usuario@ejemplo.com",
+        "subject": "Correo Generado por IA",
+        "message": "={{$json[\"choices\"][0][\"text\"]}}"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Generate Email Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Email Content": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

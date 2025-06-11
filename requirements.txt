@@ -1,4 +1,7 @@
 fastapi
-uvicorn
+uvicorn[standard]
 openai
+httpx
+requests
+python-dotenv
 python-multipart
